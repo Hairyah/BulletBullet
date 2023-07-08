@@ -18,7 +18,7 @@ public class test : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.tag != "sol" && collision.gameObject.tag != "cible")
         {

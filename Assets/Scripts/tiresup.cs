@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class tiresup : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class tiresup : MonoBehaviour
     [SerializeField] private GameObject balle;
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private Camera cam;
+    [SerializeField] private CinemachineVirtualCameraBase cinemachineCam;
+
     void Start()
     {
 
@@ -29,26 +32,30 @@ public class tiresup : MonoBehaviour
         if (Input.GetMouseButtonUp(1))
         {
             playerManager.retir = false;
-            cam.transform.parent.GetComponent<avance>().enabled = true;
-            currentBalle = Instantiate(balle, currentBalle.transform.position, cam.transform.parent.rotation);
+            //cam.transform.parent.GetComponent<avance>().enabled = true;
+            //currentBalle = Instantiate(balle, currentBalle.transform.position, cam.transform.parent.rotation);
+            var saveOldBalle = currentBalle;
+            currentBalle = Instantiate(balle, saveOldBalle.transform.position, saveOldBalle.transform.rotation);
+
+            saveOldBalle.GetComponentInChildren<CinemachineVirtualCamera>().Priority = 0;
             //var saveOldBalle = currentBalle;
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
             //currentBalle = Instantiate(balle, saveOldBalle.transform.position, saveOldBalle.transform.parent.rotation);
 
-            cam.transform.GetChild(0).gameObject.SetActive(true);
-            cam.transform.parent.eulerAngles = rotationAvant;
-            cam.transform.SetParent(currentBalle.transform);
+            //cam.transform.GetChild(0).gameObject.SetActive(true);
+            //cam.transform.parent.eulerAngles = rotationAvant;
+            //cam.transform.SetParent(currentBalle.transform);
             playerManager.balleActu = currentBalle;
             playerManager.actualSpeed = playerManager.moveSpeed;
             cam.transform.localEulerAngles = Vector3.zero;
