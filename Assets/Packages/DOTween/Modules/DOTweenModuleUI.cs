@@ -166,7 +166,7 @@ namespace DG.Tweening
         #endregion
 
         #region Outline
-
+        /*
         /// <summary>Tweens a Outline's effectColor to the given value.
         /// Also stores the Outline as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
@@ -196,9 +196,9 @@ namespace DG.Tweening
             t.SetTarget(target);
             return t;
         }
-
+        */
         #endregion
-
+        
         #region RectTransform
 
         /// <summary>Tweens a RectTransform's anchoredPosition to the given value.
