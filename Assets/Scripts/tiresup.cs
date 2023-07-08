@@ -22,18 +22,20 @@ public class tiresup : MonoBehaviour
         {
             cam.transform.localPosition = new Vector3(0, 0, 0);
             playerManager.actualSpeed = 0;
-            rotationAvant = cam.transform.parent.rotation.eulerAngles;
+            //rotationAvant = cam.transform.parent.rotation.eulerAngles;
             playerManager.retir = true;
             cam.transform.GetChild(0).gameObject.SetActive(false);
         }
         if (Input.GetMouseButtonUp(1))
         {
             playerManager.retir = false;
-            cam.transform.parent.GetComponent<avance>().enabled = true;
-            currentBalle = Instantiate(balle, currentBalle.transform.position, cam.transform.parent.rotation);
+            //cam.transform.parent.GetComponent<avance>().enabled = true;
+            //currentBalle = Instantiate(balle, currentBalle.transform.position, cam.transform.parent.rotation);
+            var saveOldBalle = currentBalle;
+            currentBalle = Instantiate(balle, saveOldBalle.transform.position, saveOldBalle.transform.parent.rotation);
 
             cam.transform.GetChild(0).gameObject.SetActive(true);
-            cam.transform.parent.eulerAngles = rotationAvant;
+            //cam.transform.parent.eulerAngles = rotationAvant;
             cam.transform.SetParent(currentBalle.transform);
             playerManager.balleActu = currentBalle;
             playerManager.actualSpeed = playerManager.moveSpeed;

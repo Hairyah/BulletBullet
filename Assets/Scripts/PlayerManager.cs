@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour
 
     public bool isReady, isDead;
 
+    public float limiteDeRotation=0.1f;
+
     private void Awake()
     {
         Instance = this;
@@ -60,15 +62,15 @@ public class PlayerManager : MonoBehaviour
     {
         if(!retir)
         { 
-        if (mousePosX > 0.1f)
-            mousePosX = 0.1f;
-        if (mousePosX < -0.1f)
-            mousePosX = -0.1f;
+        if (mousePosX > limiteDeRotation)
+            mousePosX = limiteDeRotation;
+        if (mousePosX < -limiteDeRotation)
+            mousePosX = -limiteDeRotation;
 
-        if (mousePosY > 0.1f)
-            mousePosY = 0.1f;
-        if (mousePosY < -0.1f)
-            mousePosY = -0.1f;
+        if (mousePosY > limiteDeRotation)
+            mousePosY = limiteDeRotation;
+        if (mousePosY < -limiteDeRotation)
+            mousePosY = -limiteDeRotation;
     
 
         }
