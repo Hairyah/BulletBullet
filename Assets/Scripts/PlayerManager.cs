@@ -38,14 +38,14 @@ public class PlayerManager : MonoBehaviour
 
     private void LimitMouseSpeed()
     {
-        if (mousePosX > 1)
-            mousePosX = 1;
-        if (mousePosX < -1)
-            mousePosX = -1;
+        if (mousePosX > 0.1f)
+            mousePosX = 0.1f;
+        if (mousePosX < -0.1f)
+            mousePosX = -0.1f;
 
-        if (mousePosY > 1)
-            mousePosY = 1;
-        if (mousePosY < -1)
-            mousePosY = -1;
+        if (mousePosY > 0.1f)
+            mousePosY = 0.1f;
+        if (mousePosY < -0.1f)
+            mousePosY = -0.1f;
     }
 }
