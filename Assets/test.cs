@@ -10,7 +10,7 @@ public class test : MonoBehaviour
     [SerializeField] private CinemachineVirtualCameraBase cinemachineCam;
     [SerializeField] private GameObject trails;
     [SerializeField] private GameObject AnimeSpeed;
-    [SerializeField] private 
+    [SerializeField] private ToubilolTrail toubilolTrail;
 
     void Start()
     {
@@ -30,6 +30,9 @@ public class test : MonoBehaviour
             cinemachineCam.Priority = 0;
             Destroy(trails);
             Destroy(AnimeSpeed);
+            Destroy(toubilolTrail);
+
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
     }

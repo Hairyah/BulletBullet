@@ -226,6 +226,7 @@ MonoBehaviour:
   cinemachineCam: {fileID: 4929407660921661574}
   trails: {fileID: 1418730333776534930}
   AnimeSpeed: {fileID: 0}
+  toubilolTrail: {fileID: 265836925958510163}
 --- !u!54 &7148493316421753601
 Rigidbody:
   m_ObjectHideFlags: 0

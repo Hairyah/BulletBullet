@@ -12,10 +12,11 @@ public class tiresup : MonoBehaviour
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private Camera cam;
     [SerializeField] private CinemachineVirtualCameraBase cinemachineCam;
+    private AudioManager audioManager;
 
     void Start()
     {
-
+        audioManager= FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -23,14 +24,20 @@ public class tiresup : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
+            audioManager.Play("SlowMoStart");
+            audioManager.Stop("Wind");
             cam.transform.localPosition = new Vector3(0, 0, 0);
-            playerManager.actualSpeed = 0;
+            playerManager.actualSpeed = 3;
             //rotationAvant = cam.transform.parent.rotation.eulerAngles;
             playerManager.retir = true;
             cam.transform.GetChild(0).gameObject.SetActive(false);
         }
         if (Input.GetMouseButtonUp(1))
         {
+            audioManager.Stop("SlowMoStart");
+            audioManager.Play("SlowMoEnd");
+            audioManager.Play("Tir2");
+            audioManager.Play("Wind");
             playerManager.retir = false;
             //cam.transform.parent.GetComponent<avance>().enabled = true;
             //currentBalle = Instantiate(balle, currentBalle.transform.position, cam.transform.parent.rotation);
