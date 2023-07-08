@@ -2,33 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PhysicsPlayerManager : MonoBehaviour
 {
     public float moveSpeed;
-
+    public float fireBulletForce;
 
     public Camera cam;
 
     private float mousePosX;
     private float mousePosY;
 
-
+    private void Awake()
+    {
+        GameManager.OnGameStarted += OnGameStarted;
+    }
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    void OnGameStarted()
+    {
+
+    }
     private void Update()
     {
         //Initialisation des inputs
         mousePosX = Input.GetAxis("Mouse X");
         mousePosY = Input.GetAxis("Mouse Y");
         LimitMouseSpeed();
-   
+
 
 
         transform.Rotate(new Vector3(mousePosY, mousePosX, 0), Space.Self);
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,0);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
         Debug.Log(new Vector2(mousePosX, mousePosY));
 
         //Déplacements

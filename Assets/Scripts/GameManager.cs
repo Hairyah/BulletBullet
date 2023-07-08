@@ -19,9 +19,31 @@ public class GameManager : MonoBehaviour
     public GameState currentState;
 
     public static GameManager Instance;
+
+    bool isReady, isDead;
     private void Awake()
     {
         Instance = this;
-        Application.targetFrameRate = 60;
+    }
+
+    public void Start()
+    {
+        currentState = GameState.MainMenu;
+    }
+    public void StartGame()
+    {
+        currentState = GameState.InGame;
+        OnGameStarted?.Invoke();
+    }
+
+    public void GameOver()
+    {
+        currentState = GameState.GameOver;
+        OnGameEnded?.Invoke();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadSceneAsync(0);
     }
 }
