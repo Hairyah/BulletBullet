@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,16 +7,16 @@ public class test : MonoBehaviour
 {
     public Rigidbody rb;
     public PlayerManager playerManager;
+    [SerializeField] private CinemachineVirtualCameraBase cinemachineCam;
+    [SerializeField] private GameObject trails;
+    [SerializeField] private GameObject AnimeSpeed;
+    [SerializeField] private 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        AnimeSpeed = GameObject.Find("AnimeSpeedLine");
     }
 
     public void OnTriggerEnter(Collider collision)
@@ -26,6 +27,9 @@ public class test : MonoBehaviour
             rb.AddForce(-transform.forward * 1000);
             rb.useGravity = true;
 
+            cinemachineCam.Priority = 0;
+            Destroy(trails);
+            Destroy(AnimeSpeed);
         }
 
     }
