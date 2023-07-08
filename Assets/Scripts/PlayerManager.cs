@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public float moveSpeed;
-
-
+    public GameObject balleActu;
+    [HideInInspector] public float actualSpeed;
     public Camera cam;
 
     private float mousePosX;
@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        actualSpeed = moveSpeed;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -27,12 +28,12 @@ public class PlayerManager : MonoBehaviour
    
 
 
-        transform.Rotate(new Vector3(mousePosY, mousePosX, 0), Space.Self);
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,0);
+        balleActu.transform.Rotate(new Vector3(mousePosY, mousePosX, 0), Space.Self);
+        balleActu.transform.eulerAngles = new Vector3(balleActu.transform.eulerAngles.x, balleActu.transform.eulerAngles.y,0);
         Debug.Log(new Vector2(mousePosX, mousePosY));
 
         //Déplacements
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        balleActu.transform.Translate(Vector3.forward * actualSpeed * Time.deltaTime);
     }
 
     private void LimitMouseSpeed()
