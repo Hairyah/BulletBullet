@@ -29,12 +29,12 @@ public class PlayerManager : MonoBehaviour
         Debug.Log(new Vector2(mousePosX, mousePosY));
 
         //Déplacements
-        transform.Translate(transform.forward * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
     }
 
     private void LimitMouseSpeed()
     {
-        if (mousePosX > 0.5)
+        if (mousePosX > 1)
             mousePosX = 1;
         if (mousePosX < -1)
             mousePosX = -1;
