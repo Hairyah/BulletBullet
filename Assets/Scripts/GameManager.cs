@@ -27,8 +27,10 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        currentState = GameState.InGame;
+        currentState = GameState.MainMenu;
+        
     }
+
     public void StartGame()
     {
         currentState = GameState.InGame;

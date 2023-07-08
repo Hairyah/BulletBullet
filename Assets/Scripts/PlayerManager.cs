@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance;
+
     [HideInInspector] public bool retir = false;
     public float moveSpeed;
     public GameObject balleActu;
@@ -13,28 +15,45 @@ public class PlayerManager : MonoBehaviour
     private float mousePosX;
     private float mousePosY;
 
+    public bool isReady, isDead;
+
+    private void Awake()
+    {
+        Instance = this;
+        GameManager.OnGameStarted += OnGameStarted;
+    }
 
     private void Start()
     {
         actualSpeed = moveSpeed;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
+    void OnGameStarted()
+    {
+        isReady = true;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    private void OnDestroy()
+    {
+        GameManager.OnGameStarted -= OnGameStarted;
+    }
     private void Update()
     {
-        //Initialisation des inputs
-        mousePosX = Input.GetAxis("Mouse X");
-        mousePosY = Input.GetAxis("Mouse Y");
-        LimitMouseSpeed();
-   
+        if (isReady && !isDead)
+        {
+            //Initialisation des inputs
+            mousePosX = Input.GetAxis("Mouse X");
+            mousePosY = Input.GetAxis("Mouse Y");
+            LimitMouseSpeed();
 
+            balleActu.transform.Rotate(new Vector3(mousePosY, mousePosX, 0), Space.Self);
+            balleActu.transform.eulerAngles = new Vector3(balleActu.transform.eulerAngles.x, balleActu.transform.eulerAngles.y, 0);
+            //Debug.Log(new Vector2(mousePosX, mousePosY));
 
-        balleActu.transform.Rotate(new Vector3(mousePosY, mousePosX, 0), Space.Self);
-        balleActu.transform.eulerAngles = new Vector3(balleActu.transform.eulerAngles.x, balleActu.transform.eulerAngles.y,0);
-        Debug.Log(new Vector2(mousePosX, mousePosY));
-
-        //Déplacements
-        balleActu.transform.Translate(Vector3.forward * actualSpeed * Time.deltaTime);
+            //Déplacements
+            balleActu.transform.Translate(Vector3.forward * actualSpeed * Time.deltaTime);
+        }
     }
 
     private void LimitMouseSpeed()

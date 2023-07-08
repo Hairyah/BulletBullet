@@ -8,28 +8,28 @@ public class tiresup : MonoBehaviour
     private Vector3 rotationAvant;
     public GameObject currentBalle;
     [SerializeField] private GameObject balle;
-    [SerializeField]private PlayerManager playerManager;
+    [SerializeField] private PlayerManager playerManager;
     [SerializeField] private Camera cam;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             cam.transform.localPosition = new Vector3(0, 0, 0);
             playerManager.actualSpeed = 0;
             rotationAvant = cam.transform.parent.rotation.eulerAngles;
             playerManager.retir = true;
         }
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(1))
         {
             playerManager.retir = false;
             cam.transform.parent.GetComponent<avance>().enabled = true;
-            currentBalle = Instantiate(balle,currentBalle.transform.position, cam.transform.parent.rotation);
+            currentBalle = Instantiate(balle, currentBalle.transform.position, cam.transform.parent.rotation);
 
             cam.transform.parent.eulerAngles = rotationAvant;
             cam.transform.SetParent(currentBalle.transform);

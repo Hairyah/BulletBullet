@@ -45,7 +45,8 @@ public class UIManager : MonoBehaviour
 
     public void OnGameStarted()
     {
-        MainMenu.DOFade(0, 0.2f).OnComplete(() => MainMenu.gameObject.SetActive(false));
+        MainMenu.transform.DOPunchScale(Vector2.up * 0.25f, 0.2f);
+        MainMenu.DOFade(1, 0.2f).OnComplete(() => MainMenu.gameObject.SetActive(false));
         GamePlay.gameObject.SetActive(true);
         GamePlay.DOFade(1, 0.2f);
     }
@@ -67,6 +68,4 @@ public class UIManager : MonoBehaviour
         StartGameUI.SetActive(false);
         GameManager.Instance.StartGame();
     }
-
-
 }
