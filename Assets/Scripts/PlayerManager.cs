@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    [HideInInspector] public bool retir = false;
     public float moveSpeed;
     public GameObject balleActu;
     [HideInInspector] public float actualSpeed;
@@ -38,6 +39,8 @@ public class PlayerManager : MonoBehaviour
 
     private void LimitMouseSpeed()
     {
+        if(!retir)
+        { 
         if (mousePosX > 0.1f)
             mousePosX = 0.1f;
         if (mousePosX < -0.1f)
@@ -47,5 +50,8 @@ public class PlayerManager : MonoBehaviour
             mousePosY = 0.1f;
         if (mousePosY < -0.1f)
             mousePosY = -0.1f;
+    
+
+        }
     }
 }
