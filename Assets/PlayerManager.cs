@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
         LimitMouseSpeed();
    
         transform.Rotate(new Vector3(mousePosY, mousePosX, 0), Space.Self);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,0);
         Debug.Log(new Vector2(mousePosX, mousePosY));
 
         //Déplacements
