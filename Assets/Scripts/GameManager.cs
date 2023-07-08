@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    bool isReady, isDead;
     private void Awake()
     {
         Instance = this;
@@ -28,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        currentState = GameState.MainMenu;
+        currentState = GameState.InGame;
     }
     public void StartGame()
     {
