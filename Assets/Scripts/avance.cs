@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class avance : MonoBehaviour
 {
+
     public PlayerManager playerManager;
     void Start()
     {
@@ -13,6 +14,7 @@ public class avance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * playerManager.actualSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * playerManager.moveSpeed * Time.deltaTime);
+        
     }
 }

@@ -19,6 +19,7 @@ public class cibleSuivante : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.tag);
         if(other.gameObject.tag == "Bullet")
         {
             outline.enabled = false;

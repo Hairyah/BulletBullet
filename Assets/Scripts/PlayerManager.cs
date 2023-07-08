@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
 
             balleActu.transform.Rotate(new Vector3(mousePosY, mousePosX, 0), Space.Self);
             balleActu.transform.eulerAngles = new Vector3(balleActu.transform.eulerAngles.x, balleActu.transform.eulerAngles.y, 0);
-            //Debug.Log(new Vector2(mousePosX, mousePosY));
+            Debug.Log(new Vector2(mousePosX, mousePosY));
 
             //Déplacements
             balleActu.transform.Translate(Vector3.forward * actualSpeed * Time.deltaTime);
