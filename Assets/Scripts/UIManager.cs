@@ -10,11 +10,12 @@ public class UIManager : MonoBehaviour
     public CanvasGroup MainMenu;
     public CanvasGroup GamePlay;
     public CanvasGroup GameOverMenu;
+    public GameObject PauseMenu;
+    private bool gameIsPaused = false;
 
 
     public GameObject StartGameUI;
 
-    public GameObject RestartGame;
     public GameObject GameOverPanel;
 
     private AudioManager audioManager;
@@ -30,6 +31,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        PauseMenu.SetActive(false);
+
         MainMenu.alpha = 1.0f;
         GamePlay.alpha = 0f;
         GameOverMenu.alpha = 0f;
@@ -74,5 +77,35 @@ public class UIManager : MonoBehaviour
     {
         StartGameUI.SetActive(false);
         GameManager.Instance.StartGame();
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Pause") && GameManager.Instance.currentState == GameManager.GameState.InGame)
+        {
+            if (gameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
+    public void Resume()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+    }
+    public void Pause()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        PauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
     }
 }
