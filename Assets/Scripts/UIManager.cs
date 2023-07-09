@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     //public GameObject RestartGame;
     //public GameObject GameOverPanel;
 
+    private AudioManager audioManager;
+
 
     private void Awake()
     {
@@ -24,7 +26,6 @@ public class UIManager : MonoBehaviour
 
         GameManager.OnGameStarted += OnGameStarted;
         GameManager.OnGameEnded += OnGameEnded;
-        FindObjectOfType<AudioManager>().Play("MenuMusic");
     }
 
     private void Start()
@@ -35,6 +36,9 @@ public class UIManager : MonoBehaviour
 
         GameOverMenu.gameObject.SetActive(false);
         GamePlay.gameObject.SetActive(false);
+
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.Play("MenuMusic");
     }
 
     private void OnDestroy()
@@ -50,7 +54,6 @@ public class UIManager : MonoBehaviour
         GamePlay.gameObject.SetActive(true);
         GamePlay.DOFade(1, 0.2f);
 
-        var audioManager = FindObjectOfType<AudioManager>();
         audioManager.Stop("MenuMusic");
         audioManager.Play("Wind");
         audioManager.Play("Tir1");
