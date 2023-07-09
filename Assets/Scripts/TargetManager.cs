@@ -30,7 +30,7 @@ public class TargetManager : MonoBehaviour
         return (targetIndex);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void remplacement(Collider other)
     {
         Debug.Log(other.gameObject) ;
         Debug.Log(currentTargetObject);
