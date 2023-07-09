@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
+    private bool touche = false;
     public Rigidbody rb;
     public PlayerManager playerManager;
     [SerializeField] private CinemachineVirtualCameraBase cinemachineCam;
@@ -21,20 +22,22 @@ public class test : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag != "sol" && collision.gameObject.tag != "cible")
+        if (!touche)
         {
-            playerManager.actualSpeed = 0;
-            rb.AddForce(-transform.forward * 1000);
-            rb.useGravity = true;
+            if (collision.gameObject.tag != "cible" && collision.gameObject.tag != "bullet")
+            {
+                playerManager.actualSpeed = 0;
+                rb.AddForce(-transform.forward * 1000);
+                rb.useGravity = true;
 
-            cinemachineCam.Priority = 0;
-            Destroy(trails);
-            Destroy(AnimeSpeed);
-            Destroy(toubilolTrail);
+                cinemachineCam.Priority = 0;
+                Destroy(trails);
+                Destroy(AnimeSpeed);
+                Destroy(toubilolTrail);
 
-            Cursor.lockState = CursorLockMode.Confined;
+                Cursor.lockState = CursorLockMode.Confined;
+            }
         }
-
     }
     
 }
