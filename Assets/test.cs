@@ -40,6 +40,7 @@ public class test : MonoBehaviour
                 Destroy(trails);
                 Destroy(AnimeSpeed);
                 Destroy(toubilolTrail);
+                gameObject.GetComponent<BoxCollider>().isTrigger = false;
 
 
                 audioManager.Play("Fall"+nbTouche);
