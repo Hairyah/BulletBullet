@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class changetarget : MonoBehaviour
 {
+    private Collider tkt;
     public TargetManager targetmanager;
     void Start()
     {
@@ -18,6 +19,7 @@ public class changetarget : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        targetmanager.remplacement(other);
+        tkt = other;
+        targetmanager.remplacement(tkt);
     }
 }

@@ -10,13 +10,19 @@ public class TargetManager : MonoBehaviour
     public int currentTargetIndex;
     public GameObject currentTargetObject;
 
+    public Outlinez outlinez;
+
     private void Start()
     {
         PossibleTargets = GameObject.FindGameObjectsWithTag("cible");
         currentTargetIndex = ChooseRandomNumber(-1);
         currentTargetObject = PossibleTargets[currentTargetIndex];
 
-        currentTargetObject.GetComponent<Outlinez>().enabled = true;
+        var outline = currentTargetObject.AddComponent<Outlinez>();
+        outline.OutlineColor = Color.red;
+        outline.OutlineWidth = 5f;
+
+        // currentTargetObject.GetComponent<Outlinez>().enabled = true;
     }
 
     private int ChooseRandomNumber(int currentTargetIndex)
@@ -37,13 +43,15 @@ public class TargetManager : MonoBehaviour
         if (other.gameObject == currentTargetObject)
         {
             Debug.Log("La cible est touchée = " + other);
-            currentTargetObject.GetComponent<Outlinez>().enabled = false;
+            Destroy(currentTargetObject.GetComponent<Outlinez>());
             //Add Score
            // ScoreManager.Instance.AddScore(100);
 
             currentTargetIndex = ChooseRandomNumber(currentTargetIndex);
             currentTargetObject = PossibleTargets[currentTargetIndex];
-            currentTargetObject.GetComponent<Outlinez>().enabled = true;
+            var outline = currentTargetObject.AddComponent<Outlinez>();
+            outline.OutlineColor = Color.red;
+            outline.OutlineWidth = 5f;
         }
     }
 }
