@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
     {
         Instance = this;
         GameManager.OnGameStarted += OnGameStarted;
+        GameManager.OnGameEnded += OnGameEnded;
     }
 
     private void Start()
@@ -36,9 +37,16 @@ public class PlayerManager : MonoBehaviour
         isReady = true;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    void OnGameEnded()
+    {
+        isReady = false;
+        isDead = true;
+    }
     private void OnDestroy()
     {
         GameManager.OnGameStarted -= OnGameStarted;
+        GameManager.OnGameEnded -= OnGameEnded;
     }
     private void Update()
     {

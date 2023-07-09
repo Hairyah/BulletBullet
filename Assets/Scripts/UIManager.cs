@@ -14,8 +14,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject StartGameUI;
 
-    //public GameObject RestartGame;
-    //public GameObject GameOverPanel;
+    public GameObject RestartGame;
+    public GameObject GameOverPanel;
 
     private AudioManager audioManager;
 
@@ -64,12 +64,12 @@ public class UIManager : MonoBehaviour
         GamePlay.DOFade(0, 0.2f).OnComplete(() => GamePlay.gameObject.SetActive(false));
         GameOverMenu.gameObject.SetActive(true);
 
-        //GameOverPanel.transform.localScale = Vector3.zero;
-        //RestartGame.transform.localScale = Vector3.zero;
+        GameOverPanel.transform.localScale = Vector3.zero;
+        RestartGame.transform.localScale = Vector3.zero;
 
-        //GameOverMenu.DOFade(1, 0.4f).SetDelay(0.5f)
-        //    .OnComplete(() => GameOverPanel.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack)
-        //    .OnComplete(() => RestartGame.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack)));
+        GameOverMenu.DOFade(1, 0.4f).SetDelay(0.5f)
+            .OnComplete(() => GameOverPanel.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack)
+            .OnComplete(() => RestartGame.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack)));
     }
 
     public void TriggerStartGame()
