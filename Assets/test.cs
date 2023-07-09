@@ -16,7 +16,12 @@ public class test : MonoBehaviour
     private int nbTouche = 1;
 
     public GameObject trailDefaite;
-    
+    public GameObject SplashSang;
+    public GameObject pointDeSpawnSang;
+
+    private bool gameOverBool=false;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,6 +29,7 @@ public class test : MonoBehaviour
         AnimeSpeed = GameObject.Find("AnimeSpeedLine");
         audioManager = FindObjectOfType<AudioManager>();
         nbTouche = 1;
+        gameOverBool = true;
     }
 
     public void OnTriggerEnter(Collider collision)
@@ -48,7 +54,12 @@ public class test : MonoBehaviour
                 audioManager.Play("Fall"+nbTouche);
                 nbTouche++;
                 Cursor.lockState = CursorLockMode.Confined;
-            }else if(collision.gameObject.tag == "cible")
+
+                //Appel le game manager pour lancer le game OVER
+                if(!gameOverBool)
+                    GameManager.Instance.GameOver();
+            }
+            else if(collision.gameObject.name == "cible")
             {
                 audioManager.Play("BloodSplash");
             }else if(collision.gameObject.tag == "sol")
@@ -59,9 +70,22 @@ public class test : MonoBehaviour
                 if (nbTouche > 3)
                     nbTouche = 3;
             }
-            //Appel le game manager pour lancer le game OVER
-            GameManager.Instance.GameOver();
         }
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "cible")
+        {
+            var newSplashDeSang = Instantiate(SplashSang, pointDeSpawnSang.transform.position, transform.rotation);
+            StartCoroutine(PauseSplash(newSplashDeSang));
+        }
+    }
+
+    IEnumerator PauseSplash(GameObject spashAPauser)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        spashAPauser.GetComponent<ParticleSystem>().Pause();
+    }
 }

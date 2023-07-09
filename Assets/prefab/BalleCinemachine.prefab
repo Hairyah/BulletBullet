@@ -229,6 +229,8 @@ MonoBehaviour:
   AnimeSpeed: {fileID: 0}
   toubilolTrail: {fileID: 265836925958510163}
   trailDefaite: {fileID: 4620862841900368957}
+  SplashSang: {fileID: 6252391472365192715, guid: cbf85d41bb7a491438f5dfaf6e3df650, type: 3}
+  pointDeSpawnSang: {fileID: 292437160125480908}
 --- !u!54 &7148493316421753601
 Rigidbody:
   m_ObjectHideFlags: 0
