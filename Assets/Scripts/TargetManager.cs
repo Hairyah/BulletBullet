@@ -32,8 +32,9 @@ public class TargetManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject + currentTargetObject) ;
-        if(other.gameObject == currentTargetObject)
+        Debug.Log(other.gameObject) ;
+        Debug.Log(currentTargetObject);
+        if (other.gameObject == currentTargetObject)
         {
             Debug.Log("La cible est touchée = " + other);
             currentTargetObject.GetComponent<Outlinez>().enabled = false;
