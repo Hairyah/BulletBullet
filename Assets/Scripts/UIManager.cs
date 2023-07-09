@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverPanel;
 
     private AudioManager audioManager;
+
+    public Text InGameScoreText;
+    public Text GameOverScoreText;
+    public Text GameOverHightScoreText;
 
 
     private void Awake()
@@ -107,5 +112,11 @@ public class UIManager : MonoBehaviour
         PauseMenu.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
+    }
+
+    public void UpdateScore(int score)
+    {
+        InGameScoreText.text = score.ToString();
+        InGameScoreText.transform.DOPunchScale(Vector3.one * 0.15f, 0.2f);
     }
 }

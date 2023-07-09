@@ -10,8 +10,6 @@ public class TargetManager : MonoBehaviour
     public int currentTargetIndex;
     public GameObject currentTargetObject;
 
-    public int score = 0; 
-
     private void Start()
     {
         PossibleTargets = GameObject.FindGameObjectsWithTag("cible");
@@ -24,20 +22,23 @@ public class TargetManager : MonoBehaviour
     private int ChooseRandomNumber(int currentTargetIndex)
     {
 
-        int targetIntex = Random.Range(0, PossibleTargets.Length);
-        if(currentTargetIndex == targetIntex)
+        int targetIndex = Random.Range(0, PossibleTargets.Length);
+        if(currentTargetIndex == targetIndex)
         {
             ChooseRandomNumber(currentTargetIndex);
         }
-        return (targetIntex);
+        return (targetIndex);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other);
         if(other.gameObject == currentTargetObject)
         {
+            Debug.Log("La cible est touchée = " + other);
             currentTargetObject.GetComponent<Outlinez>().enabled = false;
-            score += 100;
+            //Add Score
+            ScoreManager.Instance.AddScore(100);
 
             currentTargetIndex = ChooseRandomNumber(currentTargetIndex);
             currentTargetObject = PossibleTargets[currentTargetIndex];
