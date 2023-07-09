@@ -14,6 +14,7 @@ public class tiresup : MonoBehaviour
     [SerializeField] private CinemachineVirtualCameraBase cinemachineCam;
     private AudioManager audioManager;
 
+    public GameObject curseur;
     public int maxShootNumber = 3;
     public Image bullet1;
     public Image bullet2;
@@ -37,6 +38,7 @@ public class tiresup : MonoBehaviour
                 playerManager.actualSpeed = 3;
                 //rotationAvant = cam.transform.parent.rotation.eulerAngles;
                 playerManager.retir = true;
+                curseur.SetActive(true);
             }
         }
         if (Input.GetMouseButtonUp(1))
@@ -44,7 +46,7 @@ public class tiresup : MonoBehaviour
 
             if (maxShootNumber > 0)
             {
-
+                curseur.SetActive(false);
                 maxShootNumber--;
 
                 audioManager.Stop("SlowMoStart");
