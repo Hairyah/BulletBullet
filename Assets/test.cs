@@ -62,7 +62,7 @@ public class test : MonoBehaviour
                     GameManager.Instance.GameOver();
                 }
             }
-            else if(collision.gameObject.name == "cible")
+            else if(collision.gameObject.tag == "cible")
             {
                 audioManager.Play("BloodSplash");
             }else if(collision.gameObject.tag == "sol")
@@ -78,7 +78,7 @@ public class test : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "cible")
+        if (other.gameObject.tag == "cible")
         {
             var newSplashDeSang = Instantiate(SplashSang, pointDeSpawnSang.transform.position, transform.rotation);
             StartCoroutine(PauseSplash(newSplashDeSang));
