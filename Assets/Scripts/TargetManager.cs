@@ -32,13 +32,13 @@ public class TargetManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
+        Debug.Log(other.gameObject + currentTargetObject) ;
         if(other.gameObject == currentTargetObject)
         {
             Debug.Log("La cible est touchée = " + other);
             currentTargetObject.GetComponent<Outlinez>().enabled = false;
             //Add Score
-            ScoreManager.Instance.AddScore(100);
+           // ScoreManager.Instance.AddScore(100);
 
             currentTargetIndex = ChooseRandomNumber(currentTargetIndex);
             currentTargetObject = PossibleTargets[currentTargetIndex];
