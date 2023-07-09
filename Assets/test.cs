@@ -29,7 +29,7 @@ public class test : MonoBehaviour
         AnimeSpeed = GameObject.Find("AnimeSpeedLine");
         audioManager = FindObjectOfType<AudioManager>();
         nbTouche = 1;
-        gameOverBool = true;
+        gameOverBool = false;
     }
 
     public void OnTriggerEnter(Collider collision)
@@ -56,8 +56,11 @@ public class test : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Confined;
 
                 //Appel le game manager pour lancer le game OVER
-                if(!gameOverBool)
+                if (!gameOverBool)
+                {
+                    gameOverBool = true;
                     GameManager.Instance.GameOver();
+                }
             }
             else if(collision.gameObject.name == "cible")
             {
