@@ -15,6 +15,7 @@ public class test : MonoBehaviour
     private AudioManager audioManager;
     private int nbTouche = 1;
 
+    public GameObject trailDefaite;
     
     void Start()
     {
@@ -41,6 +42,7 @@ public class test : MonoBehaviour
                 Destroy(AnimeSpeed);
                 Destroy(toubilolTrail);
                 gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                trailDefaite.SetActive(true);
 
 
                 audioManager.Play("Fall"+nbTouche);

@@ -30,7 +30,6 @@ public class tiresup : MonoBehaviour
             playerManager.actualSpeed = 3;
             //rotationAvant = cam.transform.parent.rotation.eulerAngles;
             playerManager.retir = true;
-            cam.transform.GetChild(0).gameObject.SetActive(false);
         }
         if (Input.GetMouseButtonUp(1))
         {
