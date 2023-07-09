@@ -58,10 +58,9 @@ public class test : MonoBehaviour
                 nbTouche++;
                 if (nbTouche > 3)
                     nbTouche = 3;
-
-                //Appel le game manager pour lancer le game OVER
-                GameManager.Instance.GameOver();
             }
+            //Appel le game manager pour lancer le game OVER
+            GameManager.Instance.GameOver();
         }
     }
     
