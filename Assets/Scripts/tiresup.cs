@@ -12,13 +12,15 @@ public class tiresup : MonoBehaviour
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private Camera cam;
     [SerializeField] private CinemachineVirtualCameraBase cinemachineCam;
+    private bool enRetir;
     private AudioManager audioManager;
-
+    [SerializeField] private float tempsmax = 2;
+    private float tempscurrent;
     public int maxShootNumber = 3;
     public Image bullet1;
     public Image bullet2;
     public Image bullet3;
-
+    public Image Timer;
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
@@ -27,10 +29,14 @@ public class tiresup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Timer.fillAmount = tempscurrent / tempsmax;
+        tempscurrent -= Time.deltaTime;
         if (Input.GetMouseButtonDown(1))
         {
             if (maxShootNumber > 0)
             {
+                enRetir = true;
+                tempscurrent = tempsmax;
                 audioManager.Play("SlowMoStart");
                 audioManager.Stop("Wind");
                 cam.transform.localPosition = new Vector3(0, 0, 0);
@@ -39,12 +45,12 @@ public class tiresup : MonoBehaviour
                 playerManager.retir = true;
             }
         }
-        if (Input.GetMouseButtonUp(1))
+        if ((Input.GetMouseButtonUp(1) || tempscurrent <= 0) && enRetir)
         {
 
             if (maxShootNumber > 0)
             {
-
+                enRetir = false;
                 maxShootNumber--;
 
                 audioManager.Stop("SlowMoStart");
@@ -72,15 +78,15 @@ public class tiresup : MonoBehaviour
             }
         }
 
-        if(maxShootNumber == 2)
+        if (maxShootNumber == 2)
         {
             bullet1.color = new Color(bullet1.color.r, bullet1.color.g, bullet1.color.b, 0.2f);
         }
-        else if(maxShootNumber == 1)
+        else if (maxShootNumber == 1)
         {
             bullet2.color = new Color(bullet2.color.r, bullet2.color.g, bullet2.color.b, 0.2f);
         }
-        else if(maxShootNumber <= 0)
+        else if (maxShootNumber <= 0)
         {
             bullet3.color = new Color(bullet3.color.r, bullet3.color.g, bullet3.color.b, 0.2f);
         }
