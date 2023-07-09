@@ -4,30 +4,43 @@ using UnityEngine;
 
 public class cibleSuivante : MonoBehaviour
 {
-    public Outlinez outline;
     public GameObject prochaineCible;
+    public GameObject parent;
+    public List<GameObject> liste;
+    public GameObject enfant;
+
     void Start()
     {
-        outline = gameObject.GetComponent<Outlinez>();
+        /*
+        foreach (Transform Child in parent.transform)
+        {
+            liste.Add(Child.gameObject);
+        }
+        foreach (GameObject go in liste)
+        {
+            enfant = go.transform.GetChild(1).gameObject;
+            enfant.AddComponent<Outlinez>();
+            enfant.AddComponent<MeshCollider>();
+            enfant.AddComponent<delcancheurChangement>();
+        }
+        */
     }
-
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void changementCible(GameObject other)
     {
-        Debug.Log(other.gameObject.tag);
-        if(other.gameObject.tag == "Bullet")
-        {
-            outline.enabled = false;
+        /*
+       
+            other.GetComponent<Outlinez>().enabled = false;
             prochaineCible.GetComponent<Outlinez>().enabled = true;
 
             prochaineCible.GetComponent<cibleSuivante>().enabled = true;
             this.enabled = false;
-
-        }
+        */
+        Debug.Log(other);
     }
 }
