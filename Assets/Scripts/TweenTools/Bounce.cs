@@ -5,8 +5,10 @@ using DG.Tweening;
 
 public class Bounce : MonoBehaviour
 {
-    private void Bound()
+    public Ease ease;
+
+    private void Start()
     {
-        transform.DOPunchScale(Vector3.one * 0.15f, 0.2f);
+        transform.DOScale(1.25f, 0.5f).From(1).SetLoops(-1, LoopType.Yoyo);
     }
 }
