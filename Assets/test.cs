@@ -29,7 +29,8 @@ public class test : MonoBehaviour
     {
         if (!touche)
         {
-            if (collision.gameObject.tag != "cible" && collision.gameObject.tag != "bullet")
+            Debug.Log(collision.gameObject.tag);
+            if (collision.gameObject.tag != "cible" && collision.gameObject.tag != "Bullet")
             {
                 playerManager.actualSpeed = 0;
                 rb.AddForce(-transform.forward * 1000);
