@@ -6431,7 +6431,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848509862}
-  m_LocalRotation: {x: 0.23182279, y: -0.0058105746, z: 0.001384773, w: 0.9727397}
+  m_LocalRotation: {x: 0.23182279, y: -0.0058105513, z: 0.0013847674, w: 0.9727397}
   m_LocalPosition: {x: 60.199997, y: 22.689999, z: 0.8100002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20572,12 +20572,22 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Wind
     clip: {fileID: 8300000, guid: 76937a9e59f9b7548968bc9dbcd4b118, type: 3}
-    volume: 0.36
+    volume: 0.13
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     spatialBlend: 0
     loop: 1
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: ShootSlowMo
+    clip: {fileID: 8300000, guid: ac81ec4064bc101448860dfe37e6ea44, type: 3}
+    volume: 0.36
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 0
+    loop: 0
     outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Tir1
@@ -20625,6 +20635,46 @@ MonoBehaviour:
     volume: 0.36
     volumeVariance: 0
     pitch: 1
+    pitchVariance: 0
+    spatialBlend: 0
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Fall1
+    clip: {fileID: 8300000, guid: 0838755eefb8cde45a9a60577bb4d499, type: 3}
+    volume: 0.36
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 0
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Fall2
+    clip: {fileID: 8300000, guid: d1d293627be037b459053a2208a49aef, type: 3}
+    volume: 0.12
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 0
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Fall3
+    clip: {fileID: 8300000, guid: 1cc7e1bb9d1e60948960ca87599eddc4, type: 3}
+    volume: 0.08
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 0
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: BloodSplash
+    clip: {fileID: 8300000, guid: ad909ce37935c2144a6e959d9ad302b1, type: 3}
+    volume: 0.21
+    volumeVariance: 0
+    pitch: 2.34
     pitchVariance: 0
     spatialBlend: 0
     loop: 0
@@ -21884,11 +21934,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3392434565341559471, guid: 649fafbbf0d76b14a8b30a7124f2af55, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0058105746
+      value: -0.0058105513
       objectReference: {fileID: 0}
     - target: {fileID: 3392434565341559471, guid: 649fafbbf0d76b14a8b30a7124f2af55, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.001384773
+      value: 0.0013847674
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447273768648695555, guid: 649fafbbf0d76b14a8b30a7124f2af55, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.36382255
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447273768648695555, guid: 649fafbbf0d76b14a8b30a7124f2af55, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.15536553
       objectReference: {fileID: 0}
     - target: {fileID: 4650961734082349629, guid: 649fafbbf0d76b14a8b30a7124f2af55, type: 3}
       propertyPath: m_RootOrder

@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
 
         audioManager.Stop("MenuMusic");
         audioManager.Play("Wind");
-        audioManager.Play("Tir1");
+        audioManager.Play("ShootSlowMo");
         audioManager.Play("ThemeMusic");
     }
     public void OnGameEnded()

@@ -36,7 +36,7 @@ public class tiresup : MonoBehaviour
         {
             audioManager.Stop("SlowMoStart");
             audioManager.Play("SlowMoEnd");
-            audioManager.Play("Tir2");
+            audioManager.Play("ShootSlowMo");
             audioManager.Play("Wind");
             playerManager.retir = false;
             //cam.transform.parent.GetComponent<avance>().enabled = true;
