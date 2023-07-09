@@ -45,7 +45,7 @@ public class TargetManager : MonoBehaviour
             Debug.Log("La cible est touchée = " + other);
             Destroy(currentTargetObject.GetComponent<Outlinez>());
             //Add Score
-           // ScoreManager.Instance.AddScore(100);
+           ScoreManager.Instance.AddScore(100);
 
             currentTargetIndex = ChooseRandomNumber(currentTargetIndex);
             currentTargetObject = PossibleTargets[currentTargetIndex];

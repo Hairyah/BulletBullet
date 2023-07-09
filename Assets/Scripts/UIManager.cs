@@ -72,6 +72,9 @@ public class UIManager : MonoBehaviour
         GamePlay.DOFade(0, 0.2f).OnComplete(() => GamePlay.gameObject.SetActive(false));
         GameOverMenu.gameObject.SetActive(true);
 
+        GameOverScoreText.text = ScoreManager.Instance.score.ToString();
+        GameOverHightScoreText.text = ScoreManager.Instance.hightScore.ToString();
+
         GameOverPanel.transform.localScale = Vector3.zero;
 
         GameOverMenu.DOFade(1, 0.4f).SetDelay(0.5f)
