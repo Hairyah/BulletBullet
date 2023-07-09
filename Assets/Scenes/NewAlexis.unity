@@ -20582,7 +20582,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ShootSlowMo
     clip: {fileID: 8300000, guid: ac81ec4064bc101448860dfe37e6ea44, type: 3}
-    volume: 0.36
+    volume: 0.17
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
