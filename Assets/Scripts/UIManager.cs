@@ -12,11 +12,12 @@ public class UIManager : MonoBehaviour
     public CanvasGroup GameOverMenu;
 
 
-
     public GameObject StartGameUI;
 
     //public GameObject RestartGame;
     //public GameObject GameOverPanel;
+
+    private AudioManager audioManager;
 
 
     private void Awake()
@@ -35,6 +36,9 @@ public class UIManager : MonoBehaviour
 
         GameOverMenu.gameObject.SetActive(false);
         GamePlay.gameObject.SetActive(false);
+
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.Play("MenuMusic");
     }
 
     private void OnDestroy()
@@ -49,6 +53,11 @@ public class UIManager : MonoBehaviour
         MainMenu.DOFade(1, 0.2f).OnComplete(() => MainMenu.gameObject.SetActive(false));
         GamePlay.gameObject.SetActive(true);
         GamePlay.DOFade(1, 0.2f);
+
+        audioManager.Stop("MenuMusic");
+        audioManager.Play("Wind");
+        audioManager.Play("ShootSlowMo");
+        audioManager.Play("ThemeMusic");
     }
     public void OnGameEnded()
     {
