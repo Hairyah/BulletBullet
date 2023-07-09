@@ -11,13 +11,18 @@ public class test : MonoBehaviour
     [SerializeField] private CinemachineVirtualCameraBase cinemachineCam;
     [SerializeField] private GameObject trails;
     [SerializeField] private GameObject AnimeSpeed;
-    [SerializeField] private ToubilolTrail toubilolTrail;
+    [SerializeField] private ToubilolTrail toubilolTrail; 
+    private AudioManager audioManager;
+    private int nbTouche = 1;
 
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         playerManager = GameObject.Find("GameManager").GetComponent<PlayerManager>();
         AnimeSpeed = GameObject.Find("AnimeSpeedLine");
+        audioManager = FindObjectOfType<AudioManager>();
+        nbTouche = 1;
     }
 
     public void OnTriggerEnter(Collider collision)
@@ -36,7 +41,20 @@ public class test : MonoBehaviour
                 Destroy(AnimeSpeed);
                 Destroy(toubilolTrail);
 
+
+                audioManager.Play("Fall"+nbTouche);
+                nbTouche++;
                 Cursor.lockState = CursorLockMode.Confined;
+            }else if(collision.gameObject.tag == "cible")
+            {
+                audioManager.Play("BloodSplash");
+            }else if(collision.gameObject.tag == "sol")
+            {
+                audioManager.Play("Fall" + nbTouche);
+
+                nbTouche++;
+                if (nbTouche > 3)
+                    nbTouche = 3;
             }
         }
     }
