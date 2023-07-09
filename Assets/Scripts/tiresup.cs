@@ -31,7 +31,7 @@ public class tiresup : MonoBehaviour
     {
         Timer.fillAmount = tempscurrent / tempsmax;
         tempscurrent -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !PlayerManager.Instance.isDead && !UIManager.Instance.gameIsPaused && (GameManager.Instance.currentState == GameManager.GameState.InGame))
         {
             if (maxShootNumber > 0)
             {
@@ -45,7 +45,7 @@ public class tiresup : MonoBehaviour
                 playerManager.retir = true;
             }
         }
-        if ((Input.GetMouseButtonUp(1) || tempscurrent <= 0) && enRetir)
+        if ((Input.GetMouseButtonUp(1) || tempscurrent <= 0) && enRetir && !PlayerManager.Instance.isDead && !UIManager.Instance.gameIsPaused && (GameManager.Instance.currentState == GameManager.GameState.InGame))
         {
 
             if (maxShootNumber > 0)
