@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     public CanvasGroup GamePlay;
     public CanvasGroup GameOverMenu;
     public GameObject PauseMenu;
-    private bool gameIsPaused = false;
+    public bool gameIsPaused = false;
 
 
     public GameObject StartGameUI;

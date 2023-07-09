@@ -50,7 +50,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
-        if (isReady && !isDead)
+        if (isReady && !isDead && !UIManager.Instance.gameIsPaused)
         {
             //Initialisation des inputs
             mousePosX = Input.GetAxis("Mouse X");
