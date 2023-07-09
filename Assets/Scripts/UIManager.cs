@@ -65,11 +65,9 @@ public class UIManager : MonoBehaviour
         GameOverMenu.gameObject.SetActive(true);
 
         GameOverPanel.transform.localScale = Vector3.zero;
-        RestartGame.transform.localScale = Vector3.zero;
 
         GameOverMenu.DOFade(1, 0.4f).SetDelay(0.5f)
-            .OnComplete(() => GameOverPanel.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack)
-            .OnComplete(() => RestartGame.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack)));
+            .OnComplete(() => GameOverPanel.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack));
     }
 
     public void TriggerStartGame()
